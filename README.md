@@ -2,6 +2,8 @@
 
 This is an online books system, implemented using react and react-bootstrap. Contains functions such as books and authors. The system uses many reusable components to improve the reusability of the project.
 
+![](src/images/books.gif)
+
 ## Getting started
 
 To get the frontend running locally:
