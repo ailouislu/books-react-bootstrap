@@ -6,6 +6,8 @@ This is an online books system, implemented using react and react-bootstrap. Con
 
 ## Getting started
 
+You can view a live demo over at http://books.nzlouis.com
+
 To get the frontend running locally:
 
 - Clone this repo
