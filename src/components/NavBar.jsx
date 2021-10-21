@@ -25,6 +25,7 @@ const NavBar = () => {
       <Nav className="me-auto">
         <Nav.Link href="/books">Books</Nav.Link>
         <Nav.Link href="/authors">Authors</Nav.Link>
+        <Nav.Link href="/rentals">Rentals</Nav.Link>
       </Nav>
       </Container>
     </Navbar>

@@ -5,15 +5,15 @@ import Accordion from 'react-bootstrap/Accordion'
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
-import { getAuthor } from "../services/fakeAuthorService";
+import { getAuthor } from "../services/authorService";
  
 function AuthorDetails(props) {
     const [data, setData] = useState([]);
 
     const getData = async () => {
         try {
-            const result = getAuthor(props.match.params.id);
-            setData(result);
+            const result = await getAuthor(props.match.params.id);
+            setData(result.data.data);
         } catch (ex) {
             if (ex.response && ex.response.status === 404)
             props.history.replace("/not-found");
@@ -99,6 +99,7 @@ function AuthorDetails(props) {
     </div>
     )
 }
+
 
 export default AuthorDetails
 

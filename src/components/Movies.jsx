@@ -2,19 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import _ from "lodash";
-import Breadcrumb from 'react-bootstrap/Breadcrumb'
+import MoviesTable from "./MoviesTable";
 import ListGroup from "./common/ListGroup";
 import Pagination from "./common/Pagination";
-import AuthorsTable from "./AuthorsTable";
 import SearchBox from "./SearchBox";
-import { getAuthors, deleteAuthor } from "../services/authorService";
+import { getMovies, deleteMovie } from "../services/movieService";
 import { getGenres } from "../services/genreService";
 import { paginate } from "../utils/paginate";
 
 
-class Authors extends Component {
+class Movies extends Component {
   state = {
-    authors: [],
+    books: [],
     genres: "",
     currentPage: 1,
     pageSize: 4,
@@ -28,32 +27,32 @@ class Authors extends Component {
                       .then((response) =>response.data);
     const genres = [{ id: "", name: "All Genres" }, ...data];
 
-    const { data: authors } = await getAuthors()
+    const { data: books } = await getMovies()
                             .then((response) =>response.data);
-    this.setState({ authors, genres });
+    this.setState({ books, genres });
   }
 
-  handleDelete = async author => {
-    const originalAuthors = this.state.authors;
-    const authors = originalAuthors.filter(b => b.id !== author.id);
-    this.setState({ authors });
+  handleDelete = async movie => {
+    const originalMovies = this.state.books;
+    const books = originalMovies.filter(m => m.id !== movie.id);
+    this.setState({ books });
 
     try {
-      await deleteAuthor(author.id);
+      await deleteMovie(movie.id);
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
-        toast.error("This author has already been deleted.");
+        toast.error("This movie has already been deleted.");
 
-      this.setState({ authors: originalAuthors });
+      this.setState({ books: originalMovies });
     }
   };
 
-  handleLike = author => {
-    const authors = [...this.state.authors];
-    const index = authors.indexOf(author);
-    authors[index] = { ...authors[index] };
-    authors[index].liked = !authors[index].liked;
-    this.setState({ authors });
+  handleLike = movie => {
+    const books = [...this.state.books];
+    const index = books.indexOf(movie);
+    books[index] = { ...books[index] };
+    books[index].liked = !books[index].liked;
+    this.setState({ books });
   };
 
   handlePageChange = page => {
@@ -79,60 +78,56 @@ class Authors extends Component {
       sortColumn,
       selectedGenre,
       searchQuery,
-      authors: allAuthors
+      books: allMovies
     } = this.state;
 
-    let filtered = allAuthors;
+    let filtered = allMovies;
     if (searchQuery)
-      filtered = allAuthors.filter(m =>
-        m.fullName.toLowerCase().startsWith(searchQuery.toLowerCase())
+      filtered = allMovies.filter(m =>
+        m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
-    else if (selectedGenre && selectedGenre.name !== "All Genres")
-      filtered = allAuthors.filter(m => m.type === selectedGenre.name);
+    else if (selectedGenre && selectedGenre.name != "All Genres")
+      filtered = allMovies.filter(m => m.genre === selectedGenre.name);
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
 
-    const authors = paginate(sorted, currentPage, pageSize);
+    const books = paginate(sorted, currentPage, pageSize);
 
-    return { totalCount: filtered.length, data: authors };
+    return { totalCount: filtered.length, data: books };
   };
 
   render() {
-    const { length: count } = this.state.authors;
+    const { length: count } = this.state.books;
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { user } = this.props;
 
-    if (count === 0) return <p>There are no authors in the database.</p>;
+    if (count === 0) return <p>There are no books in the database.</p>;
 
-    const { totalCount, data: authors } = this.getPagedData();
+    const { totalCount, data: books } = this.getPagedData();
 
     return (
-      <div className="container">
-        <Breadcrumb>
-          <Breadcrumb.Item active>Authors</Breadcrumb.Item>
-        </Breadcrumb>
       <div className="row">
-        <div className="col-sm-4">
+        <div className="col-3">
           <ListGroup
             items={this.state.genres}
             selectedItem={this.state.selectedGenre}
             onItemSelect={this.handleGenreSelect}
           />
         </div>
-        
-        <div className="col-sm-8">
+        <div className="col">
           {user && (
             <Link
-              to="/authors/new"
+              to="/books/new"
               className="btn btn-primary"
+              style={{ marginBottom: 20 }}
             >
-              New Author
+              New Movie
             </Link>
           )}
-          <p>Showing {totalCount} authors in the database.</p>
+          <p>Showing {totalCount} books in the database.</p>
           <SearchBox value={searchQuery} onChange={this.handleSearch} />
-          <AuthorsTable
-            authors={authors}
+          <MoviesTable
+            books={books}
             sortColumn={sortColumn}
             onLike={this.handleLike}
             onDelete={this.handleDelete}
@@ -146,9 +141,8 @@ class Authors extends Component {
           />
         </div>
       </div>
-      </div>
     );
   }
 }
 
-export default Authors;
+export default Movies;

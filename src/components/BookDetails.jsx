@@ -7,15 +7,15 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
-import { getBook } from "../services/fakeBookService";
+import { getBook } from "../services/bookService";
  
 function BookDetails(props) {
     const [data, setData] = useState([]);
 
     const getData = async () => {
         try {
-            const result = getBook(props.match.params.id);
-            setData(result);
+            const result = await getBook(props.match.params.id);
+            setData(result.data.data);
         } catch (ex) {
             if (ex.response && ex.response.status === 404)
             props.history.replace("/not-found");

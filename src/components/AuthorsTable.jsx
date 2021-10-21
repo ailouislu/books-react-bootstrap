@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Table from "./common/Table";
+import auth from "../services/authService";
 
 class AuthorsTable extends Component {
   columns = [
@@ -26,6 +27,11 @@ class AuthorsTable extends Component {
     )
   };
 
+  constructor() {
+    super();
+    const user = auth.getCurrentUser();
+    if (user && user.isAdmin) this.columns.push(this.deleteColumn);
+  }
 
   render() {
     const { authors, onSort, sortColumn } = this.props;
