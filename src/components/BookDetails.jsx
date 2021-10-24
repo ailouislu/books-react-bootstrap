@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
+import Container from 'react-bootstrap/Container'
 import Spinner from 'react-bootstrap/Spinner'
 import { getBook } from "../services/bookService";
  
@@ -72,9 +73,10 @@ function BookDetails(props) {
                 <Breadcrumb.Item active>{data.title}</Breadcrumb.Item>
             </Breadcrumb>
 
+        <Container>
             <Row>
                 <Col sm={5}>
-                    <Image src={imageSrc} />
+                    <Image src={imageSrc} fluid />
                     <p></p>
                     <Row>
                         <Col md={{ span: 3, offset: 3 }}>
@@ -170,6 +172,7 @@ function BookDetails(props) {
                 </Table>
                 </Col>
             </Row>
+            </Container>
             <p></p>
             <Row>
                 <Col>
