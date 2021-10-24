@@ -7,15 +7,18 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
+import Spinner from 'react-bootstrap/Spinner'
 import { getBook } from "../services/bookService";
  
 function BookDetails(props) {
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState([]);
 
     const getData = async () => {
         try {
             const result = await getBook(props.match.params.id);
             setData(result.data.data);
+            setIsLoading(false);
         } catch (ex) {
             if (ex.response && ex.response.status === 404)
             props.history.replace("/not-found");
@@ -23,6 +26,7 @@ function BookDetails(props) {
     }
 
     useEffect(() =>{
+        setIsLoading(true);
         getData();
      }, []);
 
@@ -45,6 +49,21 @@ function BookDetails(props) {
     const handelBackToBooks = () =>{
         props.history.push('/books')
     }
+
+    if (isLoading) return (
+        <div>
+          <Row>
+              <Col sm={3}>
+                <Breadcrumb>
+                <Breadcrumb.Item onClick={handelBackToBooks}>Books</Breadcrumb.Item>
+                </Breadcrumb>
+              </Col>
+              <Col sm={2}>
+                <Spinner animation="border" variant="primary" />
+              </Col>
+          </Row>
+        </div>
+      )
 
     return (
         <div>

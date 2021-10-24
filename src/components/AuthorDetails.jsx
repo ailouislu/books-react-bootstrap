@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Accordion from 'react-bootstrap/Accordion'
+import Spinner from 'react-bootstrap/Spinner'
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
@@ -9,11 +10,13 @@ import { getAuthor } from "../services/authorService";
  
 function AuthorDetails(props) {
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState([]);
 
     const getData = async () => {
         try {
             const result = await getAuthor(props.match.params.id);
             setData(result.data.data);
+            setIsLoading(false);
         } catch (ex) {
             if (ex.response && ex.response.status === 404)
             props.history.replace("/not-found");
@@ -21,6 +24,7 @@ function AuthorDetails(props) {
     }
 
     useEffect(() =>{
+        setIsLoading(true);
         getData();
      }, []);
 
@@ -37,6 +41,21 @@ function AuthorDetails(props) {
     const handelBackToBooks = () =>{
         props.history.push('/authors')
     }
+
+    if (isLoading) return (
+        <div>
+          <Row>
+              <Col sm={3}>
+                <Breadcrumb>
+                <Breadcrumb.Item onClick={handelBackToBooks}>Books</Breadcrumb.Item>
+                </Breadcrumb>
+              </Col>
+              <Col sm={2}>
+                <Spinner animation="border" variant="primary" />
+              </Col>
+          </Row>
+        </div>
+      )
 
     return (
         <div>

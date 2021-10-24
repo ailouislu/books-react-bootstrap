@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import _ from "lodash";
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
+import Spinner from 'react-bootstrap/Spinner'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import ListGroup from "./common/ListGroup";
 import Pagination from "./common/Pagination";
 import AuthorsTable from "./AuthorsTable";
@@ -20,7 +23,8 @@ class Authors extends Component {
     pageSize: 4,
     searchQuery: "",
     selectedGenre: null,
-    sortColumn: { path: "title", order: "asc" }
+    sortColumn: { path: "title", order: "asc" },
+    isLoading: true
   };
 
   async componentDidMount() {
@@ -30,7 +34,7 @@ class Authors extends Component {
 
     const { data: authors } = await getAuthors()
                             .then((response) =>response.data);
-    this.setState({ authors, genres });
+    this.setState({ authors, genres, isLoading: false });
   }
 
   handleDelete = async author => {
@@ -79,7 +83,7 @@ class Authors extends Component {
       sortColumn,
       selectedGenre,
       searchQuery,
-      authors: allAuthors
+      authors: allAuthors,
     } = this.state;
 
     let filtered = allAuthors;
@@ -98,6 +102,23 @@ class Authors extends Component {
   };
 
   render() {
+
+    const isLoading = this.state.isLoading;
+    if (isLoading) return (
+      <div>
+        <Row>
+            <Col sm={3}>
+              <Breadcrumb>
+                <Breadcrumb.Item active>Authors</Breadcrumb.Item>
+              </Breadcrumb>
+            </Col>
+            <Col sm={2}>
+              <Spinner animation="border" variant="primary" />
+            </Col>
+        </Row>
+      </div>
+    )
+
     const { length: count } = this.state.authors;
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { user } = this.props;

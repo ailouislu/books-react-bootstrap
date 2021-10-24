@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Authors from "./components/Authors";
-import BooksCard from "./components/BooksCard";
+import Books from "./components/Books";
 import BookDetails from "./components/BookDetails";
 import AuthorDetails from "./components/AuthorDetails";
 import Rentals from "./components/Rentals";
@@ -33,7 +33,7 @@ class App extends Component {
             <Route path="/authors/:id" component={AuthorDetails} />
             <Route
               path="/books"
-              render={props => <BooksCard {...props} />}
+              render={props => <Books {...props} />}
             />
             <Route path="/authors" render={props => 
                 <Authors {...props} />}
