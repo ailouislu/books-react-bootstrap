@@ -5,9 +5,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
-import Spinner from 'react-bootstrap/Spinner'
 import SearchBox from "./SearchBox";
 import ListGroup from "./common/ListGroup";
+import Spinner from "./common/Spinner";
 import { getBooks } from "../services/bookService";
 import { getGenres } from "../services/genreService";
 
@@ -63,7 +63,7 @@ function Books(props) {
           <Breadcrumb>
             <Breadcrumb.Item active>Books</Breadcrumb.Item>
           </Breadcrumb>
-          <Spinner style={{ position: 'absolute', top:'50%', left:'50%' }} animation="border" variant="primary" />
+          <Spinner />
       </div>
     )
 

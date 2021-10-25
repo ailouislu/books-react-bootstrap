@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import Container from 'react-bootstrap/Container'
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from "./common/Spinner";
 import { getBook } from "../services/bookService";
  
 function BookDetails(props) {
@@ -56,7 +56,7 @@ function BookDetails(props) {
             <Breadcrumb>
                 <Breadcrumb.Item onClick={handelBackToBooks}>Books</Breadcrumb.Item>
             </Breadcrumb>
-            <Spinner style={{ position: 'absolute', top:'50%', left:'50%' }} animation="border" variant="primary" />
+            <Spinner />
         </div>
       )
 

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Accordion from 'react-bootstrap/Accordion'
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from "./common/Spinner";
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
@@ -47,7 +47,7 @@ function AuthorDetails(props) {
             <Breadcrumb>
                 <Breadcrumb.Item onClick={handelBackToBooks}>Books</Breadcrumb.Item>
             </Breadcrumb>
-            <Spinner style={{ position: 'absolute', top:'50%', left:'50%' }} animation="border" variant="primary" />
+            <Spinner />
         </div>
       )
 

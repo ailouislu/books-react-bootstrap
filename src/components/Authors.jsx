@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import _ from "lodash";
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
-import Spinner from 'react-bootstrap/Spinner'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import ListGroup from "./common/ListGroup";
 import Pagination from "./common/Pagination";
+import Spinner from "./common/Spinner";
 import AuthorsTable from "./AuthorsTable";
 import SearchBox from "./SearchBox";
 import { getAuthors, deleteAuthor } from "../services/authorService";
@@ -109,7 +107,7 @@ class Authors extends Component {
           <Breadcrumb>
             <Breadcrumb.Item active>Authors</Breadcrumb.Item>
           </Breadcrumb>
-          <Spinner style={{ position: 'absolute', top:'50%', left:'50%' }} animation="border" variant="primary" />
+          <Spinner/>
       </div>
     )
 
