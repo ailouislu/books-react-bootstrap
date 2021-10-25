@@ -77,13 +77,13 @@ function Books(props) {
     if (count === 0) return <p>There are no books in the database.</p>;
   
     return (
-        <div>
-            <Breadcrumb>
-                <Breadcrumb.Item active>Books</Breadcrumb.Item>
-            </Breadcrumb>
+      <div>
+        <Breadcrumb>
+            <Breadcrumb.Item active>Books</Breadcrumb.Item>
+        </Breadcrumb>
 
-            <Container>
-            <Row>
+        <Container>
+          <Row>
             <Col sm={3}>
                 <ListGroup
                 items={types}
@@ -91,40 +91,38 @@ function Books(props) {
                 onItemSelect={handleGenreSelect}
                 />
             </Col>
+
             <Col sm={9}>
-            <Container>
-            <p>Showing {count} books in the database.</p>
-            <SearchBox value={searchQuery} onChange={handleSearch} />
-            <Row xs={1} md={2} className="g-4">
-            {
-            data.map((item, index) => {
-                return <React.Fragment key={index}>
-                <Col>
-                <Link to={`/books/${item.id}`}>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={require(`../images/${item.isbn}.jpg`).default} />
-                        <Card.Body>
-                            <Card.Title>{item.title}</Card.Title>
-                            <Card.Text>
-                                {item.subtitle}
-                            </Card.Text>
-                                Author: {item.author}
-                        </Card.Body>
-                        Price: {item.price}
-                    </Card>
-                </Link>
-                </Col>
-                </React.Fragment>
-            })
-            }
-            </Row>
-            </Container>
+              <Container fluid>
+                <p>Showing {count} books in the database.</p>
+                <SearchBox value={searchQuery} onChange={handleSearch} />
+                <Row xs={1} md={2} className="g-4">
+                { data.map((item, index) => {
+                    return <React.Fragment key={index}>
+                      <Col>
+                        <Link to={`/books/${item.id}`}>
+                            <Card style={{ width: '18rem' }}>
+                                <Card.Img variant="top" fluid src={require(`../images/${item.isbn}.jpg`).default} />
+                                <Card.Body>
+                                    <Card.Title>{item.title}</Card.Title>
+                                    <Card.Text>
+                                        {item.subtitle}
+                                    </Card.Text>
+                                        Author: {item.author}
+                                </Card.Body>
+                                Price: {item.price}
+                            </Card>
+                        </Link>
+                      </Col>
+                    </React.Fragment>
+                })
+                }
+                </Row>
+              </Container>
             </Col>
-            </Row>
-
-            </Container>
-
-        </div>
+          </Row>
+        </Container>
+      </div>
     )
 }
 
