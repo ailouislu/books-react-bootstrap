@@ -53,16 +53,10 @@ function BookDetails(props) {
 
     if (isLoading) return (
         <div>
-          <Row>
-              <Col sm={3}>
-                <Breadcrumb>
+            <Breadcrumb>
                 <Breadcrumb.Item onClick={handelBackToBooks}>Books</Breadcrumb.Item>
-                </Breadcrumb>
-              </Col>
-              <Col sm={2}>
-                <Spinner animation="border" variant="primary" />
-              </Col>
-          </Row>
+            </Breadcrumb>
+            <Spinner style={{ position: 'absolute', top:'50%', left:'50%' }} animation="border" variant="primary" />
         </div>
       )
 

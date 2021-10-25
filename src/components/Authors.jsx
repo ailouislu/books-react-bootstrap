@@ -106,16 +106,10 @@ class Authors extends Component {
     const isLoading = this.state.isLoading;
     if (isLoading) return (
       <div>
-        <Row>
-            <Col sm={3}>
-              <Breadcrumb>
-                <Breadcrumb.Item active>Authors</Breadcrumb.Item>
-              </Breadcrumb>
-            </Col>
-            <Col sm={2}>
-              <Spinner animation="border" variant="primary" />
-            </Col>
-        </Row>
+          <Breadcrumb>
+            <Breadcrumb.Item active>Authors</Breadcrumb.Item>
+          </Breadcrumb>
+          <Spinner style={{ position: 'absolute', top:'50%', left:'50%' }} animation="border" variant="primary" />
       </div>
     )
 
