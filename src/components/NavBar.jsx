@@ -7,7 +7,7 @@ const NavBar = () => {
 
   const handleLink = () => {
     const windowLink = window.open('about:blank');
-    windowLink.location.href = "http://nzlouis.com"
+    windowLink.location.href = "https://nzlouis.com"
   }
 
   return (
