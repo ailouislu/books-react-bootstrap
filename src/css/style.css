@@ -105,7 +105,7 @@
 	/*! autoprefixer: off */
 	-webkit-box-orient: vertical;
 	/*! autoprefixer: on */
-	word-break: break-all;
+	word-break: break-word;
 }
 
 
