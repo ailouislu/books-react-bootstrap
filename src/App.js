@@ -10,6 +10,7 @@ import AuthorDetails from "./components/AuthorDetails";
 import Rentals from "./components/Rentals";
 import NotFound from "./components/NotFound";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Logout from "./components/Logout";
@@ -44,6 +45,7 @@ class App extends Component {
             <Redirect to="/not-found" />
           </Switch>
         </main>
+        <Footer />
       </React.Fragment>
     );
   }
