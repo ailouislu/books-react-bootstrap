@@ -12,8 +12,8 @@ function Footer(props) {
                 </a>
 
                 <ul class="nav col-md-4 justify-content-end">
-                <li class="nav-item"><a href="https://nzlouis.com" target="_blank" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="https://nzlouis.com" target="_blank" class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href="https://nzlouis.com" target="_blank" rel="noreferrer" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="https://nzlouis.com" target="_blank" rel="noreferrer" class="nav-link px-2 text-muted">About</a></li>
                 </ul>
             </footer>
         </div>

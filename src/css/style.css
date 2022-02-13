@@ -124,3 +124,38 @@
 .fadeIn-right {
 	left: 80%;
 }
+
+/* BookDetails */
+
+.bookDetails__subtitle {
+	margin: 2rem 0;
+}
+
+.bookDetails__p {
+	text-align: center;
+	margin-top: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+.bookDetails__price {
+	color: red;
+	margin: 1.5rem 0;
+}
+
+.booksDetails__author {
+	display: flex;
+	justify-content: space-between;
+}
+
+.booksDetails__authorColor {
+	color: #000;
+}
+
+.booksDetails__type {
+	display: flex;
+	justify-content: space-between;
+}
+
+.bookDetails__description {
+	margin: 1.5rem 0;
+}

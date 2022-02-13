@@ -71,66 +71,53 @@ function BookDetails(props) {
             <Row>
                 <Col sm={5}>
                     <Image src={imageSrc} fluid />
-                    <p></p>
                     <Row>
                         <Col md={{ span: 3, offset: 3 }}>
-                            <p>
-                            <Button variant="primary" onClick={handelBackToBooks}>Back</Button>{''}
+                            <p className="bookDetails__p">
+                                <Button variant="primary" onClick={handelBackToBooks}>Back</Button>{''}
                             </p>
                         </Col>
                     </Row>
                 </Col>
                 <Col sm={7}>
                 <div>
-                <h1>
-                    {data.title}
-                </h1>
-                <p></p>
-                <h5>
-                    {data.subtitle}
-                </h5>
-                <h5>
-                <ColoredLine color="black" />
-                    <Row>
-                        <Col sm={6}>
-                        By <label style={{color:'green' }}>
-                            {data.author}
-                        </label>
-                        </Col>
-                        <Col sm={6} align="right">
-                        <label style={{color:'red' }}>
-                            Best Seller
-                        </label>
-                        </Col>
-                    </Row>
-                </h5>
-                <ColoredLine color="black" />
-                <h5>
-                <Row>
-                    <Col sm={6}>
-                        <Badge pill bg="primary">
-                            {data.type}
-                        </Badge>
-                    </Col>
-                    <Col sm={6} align="right">
-                        {data.format}
-                    </Col>
-                </Row>
-                <p></p>
-
-                
-                </h5>
-                <ColoredLine color="black" />
-                <h6>
-                Publisher RRP ${data.publisherRRP}
-                </h6>
-                <h2>
-                <p style={{color:'red' }}>
-                    Our price  ${data.price}
-                </p>
-                <p></p>
-                </h2>
-                <Accordion defaultActiveKey="0">
+                    <h1>
+                        {data.title}
+                    </h1>
+                    <h5 className="bookDetails__subtitle">
+                        {data.subtitle}
+                    </h5>
+                    <h5>
+                        <ColoredLine color="black" />
+                         <div className="booksDetails__author">
+                             <div className="booksDetails__authorColor">
+                             By <label style={{color:'green' }}>
+                                {data.author}
+                                </label>
+                             </div>
+                            
+                                <label style={{color:'red' }}>
+                                    Best Seller
+                                </label>
+                         </div>
+                        <ColoredLine color="black" />
+                    </h5>
+                    <h5>
+                        <div className="booksDetails__type">
+                            <Badge pill bg="primary">
+                                {data.type}
+                            </Badge>
+                            {data.format}
+                        </div>
+                    </h5>
+                    <ColoredLine color="black" />
+                    <h6>
+                        Publisher RRP ${data.publisherRRP}
+                    </h6>
+                    <h2 className="bookDetails__price">
+                        Our price:  ${data.price}
+                    </h2>
+                    <Accordion className="bookDetails__description" defaultActiveKey="0">
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Description</Accordion.Header>
                             <Accordion.Body>
@@ -139,44 +126,36 @@ function BookDetails(props) {
                         </Accordion.Item>
                     </Accordion>
                 </div>
-                <p></p>
                 <Table striped borderless hover>
-                <tbody>
-                    <tr>
-                        <td style={{fontWeight: "bold"}}>ISBN</td>
-                        <td>{data.isbn}</td>
-                    </tr>
-                    <tr>
-                        <td style={{fontWeight: "bold"}}>No. Of Pages</td>
-                        <td>{data.pages}</td>
-                    </tr>
-                    <tr>
-                        <td style={{fontWeight: "bold"}}>Dimensions</td>
-                        <td>{data.dimensions}</td>
-                    </tr>
-                    <tr>
-                        <td style={{fontWeight: "bold"}}>On Sale Date</td>
-                        <td>{data.releaseDate}</td>
-                    </tr>
-                    <tr>
-                        <td style={{fontWeight: "bold"}}>Publisher</td>
-                        <td>{data.publisher}</td>
-                    </tr>
-                </tbody>
+                    <tbody>
+                        <tr>
+                            <td style={{fontWeight: "bold"}}>ISBN</td>
+                            <td>{data.isbn}</td>
+                        </tr>
+                        <tr>
+                            <td style={{fontWeight: "bold"}}>No. Of Pages</td>
+                            <td>{data.pages}</td>
+                        </tr>
+                        <tr>
+                            <td style={{fontWeight: "bold"}}>Dimensions</td>
+                            <td>{data.dimensions}</td>
+                        </tr>
+                        <tr>
+                            <td style={{fontWeight: "bold"}}>On Sale Date</td>
+                            <td>{data.releaseDate}</td>
+                        </tr>
+                        <tr>
+                            <td style={{fontWeight: "bold"}}>Publisher</td>
+                            <td>{data.publisher}</td>
+                        </tr>
+                    </tbody>
                 </Table>
-                </Col>
+            </Col>
             </Row>
             </Container>
-            <p></p>
-            <Row>
-                <Col>
-                
-                </Col>
-            </Row>
         </div>
     )
 }
-
 
 export default BookDetails
 
