@@ -62,34 +62,37 @@ function AuthorDetails(props) {
             <Col sm={3}>
             </Col>
             <Col sm={9}>
-                <h1>
+                <h1 className="authorDetails__fullName">
                     {data.fullName}
                 </h1>
-                <p></p>
-                <h5>
-                    <ColoredLine color="black" />
-                        Born: &nbsp;
-                        <label style={{color:'green' }}>
-                            {data.born}
-                        </label>
-                </h5>
                 <ColoredLine color="black" />
-                <h5>
-                <Row>
-                    <Col sm={6}>
+                    <div className="authorDetails__born">
+                        <h5>
+                            Born:
+                        </h5>
+                        <h5>
+                            <label className="authorDetails__bornAddress">
+                                {data.born}
+                            </label>
+                        </h5>
+                    </div>
+                <ColoredLine color="black" />
+                <div className="authorDetails__type">
+                    <h5>
                         <Badge pill bg="primary">
                             {data.type}
                         </Badge>
-                    </Col>
-                    <Col sm={6} align="right">
+                    </h5>
+                    <h5 className="authorDetails__yearsActive">
                         Years Active: {data.yearsActive}
-                    </Col>
-                </Row>
-                    <ColoredLine color="black" />
-                    <p></p>
-                    Books: {data.books}
+                    </h5>
+                </div>
+                <ColoredLine color="black" />
+                <h5>
+                    <div className="authorDetails__books">
+                        Books: {data.books}
+                    </div>
                 </h5>
-                <p></p>
                 <Accordion defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Description</Accordion.Header>
@@ -98,15 +101,9 @@ function AuthorDetails(props) {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-
-                <p></p>
-                <Row>
-                    <Col md={{ span: 3, offset: 4 }}>
-                        <p>
-                        <Button variant="primary" onClick={handelBackToBooks}>Back</Button>{''}
-                        </p>
-                    </Col>
-                </Row>
+                <div className="authorDetails__btn">
+                    <Button variant="primary" onClick={handelBackToBooks}>Back</Button>{''}
+                </div>
             </Col>
         </Row>
     </div>

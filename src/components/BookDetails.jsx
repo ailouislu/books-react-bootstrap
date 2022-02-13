@@ -87,29 +87,32 @@ function BookDetails(props) {
                     <h5 className="bookDetails__subtitle">
                         {data.subtitle}
                     </h5>
-                    <h5>
-                        <ColoredLine color="black" />
-                         <div className="booksDetails__author">
-                             <div className="booksDetails__authorColor">
-                             By <label style={{color:'green' }}>
-                                {data.author}
+                    <ColoredLine color="black" />
+                        <div className="booksDetails__author">
+                            <div className="booksDetails__authorColor">
+                            <h5>
+                                By <label style={{color:'green' }}>
+                                    {data.author}
                                 </label>
-                             </div>
-                            
-                                <label style={{color:'red' }}>
+                            </h5>
+                            </div>
+                            <h5>
+                                <label className="booksDetails__bestSeller">
                                     Best Seller
                                 </label>
-                         </div>
-                        <ColoredLine color="black" />
-                    </h5>
-                    <h5>
-                        <div className="booksDetails__type">
+                            </h5>
+                        </div>
+                    <ColoredLine color="black" />
+                    <div className="booksDetails__type">
+                        <h5>
                             <Badge pill bg="primary">
                                 {data.type}
                             </Badge>
+                        </h5>
+                        <h5 className="booksDetails__format">
                             {data.format}
-                        </div>
-                    </h5>
+                        </h5>
+                    </div>
                     <ColoredLine color="black" />
                     <h6>
                         Publisher RRP ${data.publisherRRP}

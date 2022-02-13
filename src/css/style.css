@@ -159,3 +159,46 @@
 .bookDetails__description {
 	margin: 1.5rem 0;
 }
+
+.booksDetails__bestSeller {
+	color: red;
+	margin-left: 4px;
+}
+
+.booksDetails__format {
+	margin-left: 4px;
+}
+
+/* AuthorDetails */
+
+.authorDetails__fullName {
+	margin-bottom: 2rem;
+}
+
+.authorDetails__born {
+	display: flex;
+	justify-content: space-between;
+}
+
+.authorDetails__bornAddress {
+	color: green;
+	margin-left: 4px;
+}
+
+.authorDetails__btn {
+	text-align: center;
+	padding: 2rem 0;
+}
+
+.authorDetails__type {
+	display: flex;
+	justify-content: space-between;
+}
+
+.authorDetails__yearsActive {
+	margin-left: 4px;
+}
+
+.authorDetails__books {
+	margin: 1.5rem 0;
+}

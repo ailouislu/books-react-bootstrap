@@ -23,7 +23,6 @@ function Books(props) {
 
     const getData = async () => {
       const result = await getBooks();
-      console.log("books data:", result);
       setData(result.data.data);
       setAllBooks(result.data.data);
       const TypesResult = await getGenres();
