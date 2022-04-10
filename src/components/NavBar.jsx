@@ -16,7 +16,7 @@ const NavBar = () => {
       <Navbar.Brand onClick={handleLink}>
         <img
             alt="NZLouis.com"
-            src={require(`../images/nzlouis.jpg`).default}
+            src={require(`../images/nzlouis.jpg`)}
             width="100"
             height="30"
             className="d-inline-block align-top"

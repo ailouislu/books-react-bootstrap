@@ -98,7 +98,7 @@ function Books(props) {
                         <Link className="link-list" to={`/books/${item.id}`}>
                             <Card className="card content">
                                 <div class="content-overlay"></div>
-                                <Card.Img className="card-img" variant="top" fluid src={require(`../images/${item.isbn}.jpg`).default} />
+                                <Card.Img className="card-img" variant="top" fluid src={require(`../images/${item.isbn}.jpg`)} />
                                 <div class="content-details fadeIn-left">
                                   <h3 class="content-title">{item.title}</h3>
                                   <p class="content-text">{item.subtitle}</p>

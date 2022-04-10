@@ -1,7 +1,7 @@
 import http from "./httpService";
-import { apiUrl } from "../config.json";
+import url from "../config.json";
 
-const apiEndpoint = apiUrl + "/authors";
+const apiEndpoint = url.apiUrl + "/authors";
 
 function authorUrl(id) {
   return `${apiEndpoint}/${id}`;

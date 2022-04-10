@@ -1,8 +1,8 @@
 import http from "./httpService";
 import axios from "axios";
-import { apiUrl } from "../config.json";
+import url from "../config.json";
 
-const apiEndpoint = apiUrl + "/books";
+const apiEndpoint = url.apiUrl + "/books";
 
 
 function bookUrl(id) {
