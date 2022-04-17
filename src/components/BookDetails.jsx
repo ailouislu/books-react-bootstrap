@@ -70,7 +70,7 @@ function BookDetails(props) {
         <Container>
             <Row>
                 <Col sm={5}>
-                    <Image src={imageSrc} fluid />
+                    <Image src={imageSrc} fluid="true" />
                     <Row>
                         <Col md={{ span: 3, offset: 3 }}>
                             <p className="bookDetails__p">

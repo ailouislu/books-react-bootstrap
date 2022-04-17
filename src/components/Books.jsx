@@ -88,7 +88,7 @@ function Books(props) {
             </Col>
 
             <Col sm={9}>
-              <Container fluid>
+              <Container fluid="true">
                 <p>Showing {count} books in the database.</p>
                 <SearchBox value={searchQuery} onChange={handleSearch} />
                 <Row xs={1} md={2} className="g-4">
@@ -97,13 +97,13 @@ function Books(props) {
                       <Col>
                         <Link className="link-list" to={`/books/${item.id}`}>
                             <Card className="card content">
-                                <div class="content-overlay"></div>
-                                <Card.Img className="card-img" variant="top" fluid src={require(`../images/${item.isbn}.jpg`)} />
-                                <div class="content-details fadeIn-left">
-                                  <h3 class="content-title">{item.title}</h3>
-                                  <p class="content-text">{item.subtitle}</p>
-                                  <p class="content-text">Author: {item.author}</p>
-                                  <p class="content-text">{item.description}</p>
+                                <div className="content-overlay"></div>
+                                <Card.Img className="card-img" variant="top" fluid="true" src={require(`../images/${item.isbn}.jpg`)} />
+                                <div className="content-details fadeIn-left">
+                                  <h3 className="content-title">{item.title}</h3>
+                                  <p className="content-text">{item.subtitle}</p>
+                                  <p className="content-text">Author: {item.author}</p>
+                                  <p className="content-text">{item.description}</p>
                                 </div>
                                 <Card.Body className="card-text">
                                     <Card.Title className="card-text">{item.title}</Card.Title>
@@ -127,7 +127,6 @@ function Books(props) {
       </div>
     )
 }
-
 
 export default Books
 
