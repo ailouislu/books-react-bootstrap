@@ -35,7 +35,7 @@ function BookDetails(props) {
 
     let imageSrc = require(`../images/default.jpg`);
     if(data.isbn)
-        imageSrc = require(`../images/${data.isbn}.jpg`);
+        imageSrc = data.image;
 
     const ColoredLine = ({ color }) => (
         <hr
