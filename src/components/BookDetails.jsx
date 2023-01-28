@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Accordion from 'react-bootstrap/Accordion'
@@ -15,7 +15,7 @@ function BookDetails(props) {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState([]);
 
-    const getData = async () => {
+    const getData = useCallback(async () => {
         try {
             const result = await getBook(props.match.params.id);
             setData(result.data.data);
@@ -24,12 +24,12 @@ function BookDetails(props) {
             if (ex.response && ex.response.status === 404)
             props.history.replace("/not-found");
         }
-    }
+    }, [props.match.params.id, setData, setIsLoading, props.history]);
 
-    useEffect(() =>{
+    useEffect(() => {
         setIsLoading(true);
         getData();
-     }, []);
+    }, [getData]);
 
 
 
